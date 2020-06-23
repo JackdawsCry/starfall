@@ -1,0 +1,87 @@
+import java.awt.*;
+import javax.swing.*;
+import java.util.*;
+import java.awt.event.*;
+import java.awt.image.*;
+import javax.imageio.ImageIO;
+import java.io.*;
+
+/**
+ * Class for actual gameplay.
+ * @author Julia Chen
+ * @version 1 May 24 2018
+ * Time spent: 10 mins
+ */
+
+public class Level{
+  /**The background image*/
+  private BufferedImage nebula, aurora, nova;
+  /**ArrayList of stars*/
+  private ArrayList<LifeStar>lives;
+  /**Boolean indicating new game*/
+  private boolean newGame;
+  
+  /**
+   * Class Constructor to load images.
+   */
+  public Level(){
+    try{
+      nebula = ImageIO.read(new File("assets/Physical.png"));
+      aurora = ImageIO.read(new File("assets/Social.png"));
+      nova = ImageIO.read(new File("assets/Mental.png"));
+    }
+    catch(IOException e){
+      System.err.println("Could not find level images!");
+    }    
+    lives = new ArrayList<LifeStar>();
+    lives.add(new LifeStar(50,50));
+    lives.add(new LifeStar(110,50));
+    lives.add(new LifeStar(170,50));
+    newGame = true;
+  }
+  
+  /**
+   * This method updates and changes the star colour to red to represent a lost life.
+   * @param count is the number of stars changed to red
+   */
+  public void updateStar(int count){
+    lives.get(count-1).changeColour();
+  }
+  
+  /**
+   * Draws background and stars. Also resets lives
+   * and labels.
+   * @param g is the Graphics object
+   */
+  public void run(Graphics g){
+    BufferedImage bi;
+    if (newGame){
+      for (LifeStar ls : lives)
+        ls.reset();
+      for (Star s : Driver.stars) {
+        s.resetSpeed();
+        s.setLabel(Driver.level-2);
+      }
+      newGame = false;
+    }
+    if (Driver.level ==3)
+      g.drawImage(nebula,0,0,null);
+    else if (Driver.level ==4)
+      g.drawImage(aurora,0,0,null);
+    else
+      g.drawImage(nova,0,0,null);
+    for(Star star : Driver.stars){
+      star.draw(g);
+    }
+    Driver.b.draw(g); 
+    for (LifeStar ls : lives)
+      ls.draw(g);
+  }
+  
+  /**
+   * Sets new game to be true
+   */
+  public void setNewGame(){
+    newGame = true;
+  }
+}

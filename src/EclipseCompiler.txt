@@ -1,0 +1,4 @@
+25 Mar 2019 3:55:21 GMT: Log 'EclipseCompiler.txt' opened: 25 Mar 2019 3:55:21 GMT with name C:\Users\julia\Documents\ISPFinalUnamusedGamesJune8\src\EclipseCompiler.txt
+25 Mar 2019 4:02:21 GMT: Log 'EclipseCompiler.txt' opened: 25 Mar 2019 4:02:21 GMT with name C:\Users\julia\Documents\ISPFinalUnamusedGamesJune8\src\EclipseCompiler.txt
+9 May 2020 1:21:20 GMT: Log 'EclipseCompiler.txt' opened: 9 May 2020 1:21:20 GMT with name C:\Users\julia\Documents\ISPFinalUnamusedGamesJune8\src\EclipseCompiler.txt
+9 May 2020 1:22:56 GMT: Log 'EclipseCompiler.txt' opened: 9 May 2020 1:22:56 GMT with name C:\Users\julia\Documents\ISPFinalUnamusedGamesJune8\src\EclipseCompiler.txt

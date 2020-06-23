@@ -1,0 +1,40 @@
+!Running
+!Walking
+!Hiking
+!Biking
+!Vegetables
+!Fruits
+!Vitamins
+!Whole Grains
+!Minerals
+!Protein
+!Healthy Fats
+!Sleep
+!Omega-3s
+!Fiber
+!Stretching
+!Cardio
+!Endurance
+!Nature
+!Fresh Food
+!Water
+?Sleep Deprivation
+?Insomnia
+?Trans Fats
+?High Sodium
+?Added Sugars
+?Soda
+?Candy
+?Fried Food
+?High Cholesterol
+?Diabetes
+?Heart Disease
+?Processed Food
+?Dehydration
+?Obesity
+?Fatigue
+?Fast Food
+?Overexertion
+?Couch Potato
+?Sugary Snacks
+?No Breakfast

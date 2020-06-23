@@ -1,0 +1,40 @@
+!Friendly
+!Enthusiastic
+!Confident
+!Interpersonal Skills
+!Trust
+!Courage
+!Comfortable
+!Communication
+!Respect
+!Self-regulation
+!Friendship
+!Having Fun
+!Supportive
+!Welfare
+!Social competence
+!Emotional Competence
+!Positivity
+!Resolution
+!Personal development
+!Interpersonal harmony
+?Unhappy
+?Isolated
+?Self-conscious
+?Conflict 
+?Stress
+?Anxiety
+?Doubt
+?Paranoia
+?Negativity
+?Tension
+?Overbearing
+?Conflicted
+?Aggressive
+?Uncooperative
+?Lazy
+?Unmotivated
+?Insensitive
+?Selfish
+?Self-centered
+?Arrogant

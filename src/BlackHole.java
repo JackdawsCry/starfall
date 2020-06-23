@@ -1,0 +1,146 @@
+import java.awt.*;
+import java.awt.image.*;
+import javax.imageio.ImageIO;
+import java.io.*;
+import java.util.*;
+import java.awt.event.*;
+
+/**
+ * This class represents the blackhole object. It controls the movement of
+ * the black hole as well as the collision of the blackhole with the stars. 
+ * The score is determined by the nature of the collisions (whether it collides with a 
+ * good/bad type star). 
+ * 
+ * @author Julia Chen
+ * @version 9 June 6 2018
+ * Time spent: 1 hour
+ */
+public class BlackHole extends KeyAdapter{
+ /**Variables for the x,y coordinates and a variable for the interval x is incremented by*/
+ public int x, y, addX; 
+ /**The image to be animated*/
+ private BufferedImage image;
+ /**Boolean variables to keep track of the keypresses*/
+ private boolean pressLeft,pressRight; 
+ /**The value of the keypress*/
+ private int key;
+ /**Player's score*/
+ private int score;
+ /**The font of the text*/
+ private Font font;
+
+ /**
+  * Constructor to load images and register font.
+  * 
+  * @param  x  start pos x of BlackHole
+  * @param  y  start pos y of BlackHole
+  * <b>Local variables: </b>
+  * <p>
+  * <b> ge </b> The graphics environment.
+  */
+ public BlackHole(int x, int y){
+  this.x = x;
+  this.y = y;
+  score = 0;
+  try{
+   image = ImageIO.read(new File("assets/blackhole.png"));
+   GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+   ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("assets/Audiowide-Regular.ttf")));
+   font = new Font("Audiowide", Font.BOLD, 25);
+  }catch(IOException|FontFormatException e){
+   System.err.println("Could not find black hole image!");
+  }
+ }
+
+ /**
+  * Updates blackhole location and checks for collision.
+  */
+ public void update(){
+  x += addX;
+  checkCollision();
+ }
+
+ /**
+  * Draws all BlackHole graphics onto canvas.
+  * @param g Graphics reference
+  */
+ public void draw(Graphics g){
+  g.drawImage(image,x,y,null);
+  g.setFont (font);
+  g.setColor (Color.white);
+  g.drawString ("SCORE: " + score, 30,30);
+ }
+
+ /**
+  * Checks collision with the stars.
+  */
+ public void checkCollision(){
+  for(Star star : Driver.stars){
+   if(this.getBounds().intersects(star.getBounds())){//Checking for collision
+    if (star.getType())//If the star is good, add points
+     score +=10;
+    else{//Else it is bad, deduct points and add lives lost
+     score -=20;
+     Star.count++;
+    }
+    star.reset();//Reset the star to the top
+   }
+  }
+ }
+
+ /**
+  * Method to generate the hitbox for the BlackHole
+  * @return Rectangle with x,y,w,h
+  */
+ public Rectangle getBounds(){
+  return new Rectangle(x,y,image.getWidth(),image.getHeight());
+ }
+
+ /**
+  * Default method for when key is pressed. Determines 
+  * direction the blackhole travels and how far it travels.
+  */
+ public void keyPressed(KeyEvent e){
+  key = e.getKeyCode();
+  if(key == KeyEvent.VK_RIGHT) {
+   pressRight = true;      
+   if (x + 15 >= 860){
+    addX = 0;
+    x = 860;
+   }
+   else
+    addX=15;
+  }
+  else if(key == KeyEvent.VK_LEFT) {
+   pressLeft = true;
+   if (x - 15 <= -70){
+    addX = 0;
+    x = -70;
+   }
+   else
+    addX=-15;
+  }
+ }
+
+ /**
+  * Resets score to 0 for new game.
+  */
+ public void resetScore(){
+  score = 0; 
+ }
+
+ /**
+  * Accessor method for score
+  * @return the score
+  */
+ public int getScore(){
+  return score;
+ }
+
+ /**
+  * Default method for when key is released.
+  */
+ public void keyReleased(KeyEvent e){
+  addX = 0;
+ }
+}
